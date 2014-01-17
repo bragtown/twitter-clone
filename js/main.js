@@ -24,24 +24,22 @@ $(function() {
 			$('button').removeAttr('disabled');
 		}
 	});
-	
-
 	$('#tweet-submit').on('click', function(){
-
-		var newTweet = $(
-			<div class="content">
-				<img class="avatar" src="img/damenleeturks.jpg" />
-				<strong class="fullname">My BFF</strong>
-				<span class="username">@mybff</span>
-				<p class="tweet-text">Today is an amazing day.</p>
-				<div class="tweet-actions">
-					<ul>
-						<li><span class="icon action-reply"></span> Reply</li>
-						<li><span class="icon action-retweet"></span> Retweet</li>
-						<li><span class="icon action-favorite"></span> Favorite</li>
-						<li><span class="icon action-more"></span> More</li>
-					</ul>
-				</div>
-		);
+		var text = $('tweet-compose').text();
+		 var $newTweet = $("												\
+		    <div class='tweet'>  											\
+		    	<div class = 'content'>                                     \
+		    		<img class = 'avatar' src = 'img/damenleeturks.jpg'/>   \
+		    		<strong class='fullname'>Jordan Braginton</strong>		\
+		    		<span class='username'>@mybff</span>					\
+		    		<p class='tweet-text'>									\
+		    		"+ text +"												\
+		    		</p>													\
+		    	</div>                                                      \
+		    </div>											                \
+		");
+		 $('#stream').append($newTweet);
 	});
+
+
 });
