@@ -1,4 +1,5 @@
 $(function() {
+	console.log($('img.avatar').next('.fullname').text());
 	$('textarea').click(function(){
 		$(this).addClass('expand');
 		$('#tweet-submit').show();
@@ -50,13 +51,13 @@ $(function() {
 
 	
 
-	$('.avatar').attr('data-toggle', 'tooltip');
+	$('img.avatar').attr('data-toggle', 'tooltip');
 
-	$('.avatar').tooltip({
-		title: function(){
-			return $('.avatar').parent($('.content')).find($('.username'));
-	};
+	$('img.avatar').tooltip({
+			placement: 'left',
+			title: function(){
+				return $(this).siblings(".username").text();
+			}
+	});
 
-
-	
 });
