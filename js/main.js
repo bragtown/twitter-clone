@@ -26,7 +26,7 @@ $(function() {
 			$('button').removeAttr('disabled');
 		}
 	});
-	$('#tweet-submit').on('click', function(){
+	$(document).on('click', '#tweet-submit', function(){
 		var text = $('.tweet-compose').val();
 		var newTweet = $('.tweet').eq(0).clone();
 		newTweet.find('.avatar').attr('src','img/alagoon.jpg');
@@ -41,7 +41,7 @@ $(function() {
 	});
 	$('.stats').hide();
 	$('.reply').hide();
-	$('.tweet').on('click', function(){
+	$(document).on('click', '.tweet', function(){
 		$('.stats').hide();
 		$('.reply').hide();
 		$(this).find('.stats').show();
@@ -53,11 +53,12 @@ $(function() {
 
 	$('img.avatar').attr('data-toggle', 'tooltip');
 
+
 	$('img.avatar').tooltip({
-			placement: 'left',
-			title: function(){
-				return $(this).siblings(".username").text();
-			}
+		placement: 'left',
+		title: function(){
+			return $(this).siblings(".username").text();
+		}
 	});
 
 });
