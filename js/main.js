@@ -3,6 +3,7 @@ $(function() {
 		$(this).addClass('expand');
 		$('#tweet-submit').show();
 		$('#char-count').show();
+		$('button').attr('disabled', 'disabled');
 	});
 	$('#tweet-submit').hide();
 	$('#char-count').hide();
@@ -16,7 +17,7 @@ $(function() {
 			$('#char-count').css('color', '#999');
 		}
 
-		if (length > 140){
+		if (length > 140 || length <= 0) {
 			
 			$('button').attr('disabled', 'disabled');
 		}
@@ -25,21 +26,37 @@ $(function() {
 		}
 	});
 	$('#tweet-submit').on('click', function(){
-		var text = $('tweet-compose').text();
-		 var $newTweet = $("												\
-		    <div class='tweet'>  											\
-		    	<div class = 'content'>                                     \
-		    		<img class = 'avatar' src = 'img/damenleeturks.jpg'/>   \
-		    		<strong class='fullname'>Jordan Braginton</strong>		\
-		    		<span class='username'>@mybff</span>					\
-		    		<p class='tweet-text'>									\
-		    		"+ text +"												\
-		    		</p>													\
-		    	</div>                                                      \
-		    </div>											                \
-		");
-		 $('#stream').append($newTweet);
+		var text = $('.tweet-compose').val();
+		var newTweet = $('.tweet').eq(0).clone();
+		newTweet.find('.avatar').attr('src','img/alagoon.jpg');
+		newTweet.find('.fullname').text('Jordan Braginton');
+		newTweet.find('.username').text('@bragtown');
+		newTweet.find('.tweet-text').text(text);
+
+		$('#stream').prepend(newTweet);
+		$('.tweet-compose').val("");
+		$('textarea').removeClass('expand');
+		$('#char-count').text('140');
 	});
+	$('.stats').hide();
+	$('.reply').hide();
+	$('.tweet').on('click', function(){
+		$('.stats').hide();
+		$('.reply').hide();
+		$(this).find('.stats').show();
+		$(this).find('.reply').show();
+	});
+	
+
+	
+
+	$('.avatar').attr('data-toggle', 'tooltip');
+
+	$('.avatar').tooltip({
+		title: function(){
+			return $('.avatar').parent($('.content')).find($('.username'));
+	};
 
 
+	
 });
